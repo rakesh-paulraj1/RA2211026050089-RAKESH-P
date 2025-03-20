@@ -1,7 +1,7 @@
 import { Link, useLocation } from 'react-router-dom';
 import { ThemeToggle } from './ThemeToggle';
 import { Button } from '../components/ui/button';
-import { Award, Menu, X } from 'lucide-react';
+import {  Menu, X } from 'lucide-react';
 import { useState } from 'react';
 
 interface LayoutProps {
@@ -22,23 +22,28 @@ export function Layout({ children }: LayoutProps) {
         <div className="container flex h-16 items-center justify-between">
           <div className="flex items-center">
             <Link to="/" className="font-semibold text-lg">
-             Test Application
+             Social media Analyzer
             </Link>
           </div>
           
           {/* Desktop Navigation */}
-          {/* <nav className="hidden md:flex items-center gap-4 justify-center">
+          <nav className="hidden md:flex items-center gap-4 justify-center">
             <Link to="/">
               <Button variant={location.pathname === '/' ? 'default' : 'ghost'}>
-                Contests
+                Latest Posts
               </Button>
             </Link>
-            <Link to="/videos">
+            <Link to="/topusers">
               <Button variant={location.pathname === '/videos' ? 'default' : 'ghost'}>
-                Videos
+             Top Users
               </Button>
             </Link>
-          </nav> */}
+            <Link to="/toppost">
+              <Button variant={location.pathname === '/videos' ? 'default' : 'ghost'}>
+             Top Posts
+              </Button>
+            </Link>
+          </nav>
           
           <div className="flex items-center justify-end">
             <ThemeToggle />
@@ -59,7 +64,7 @@ export function Layout({ children }: LayoutProps) {
                   variant={location.pathname === '/' ? 'default' : 'ghost'} 
                   className="w-full justify-start"
                 >
-                  Contests
+                 Latest Posts
                 </Button>
               </Link>
               <Link to="/videos" onClick={() => setMobileMenuOpen(false)}>
@@ -67,7 +72,15 @@ export function Layout({ children }: LayoutProps) {
                   variant={location.pathname === '/videos' ? 'default' : 'ghost'} 
                   className="w-full justify-start"
                 >
-                  Videos
+                  Top Users
+                </Button>
+              </Link>
+              <Link to="/videos" onClick={() => setMobileMenuOpen(false)}>
+                <Button 
+                  variant={location.pathname === '/videos' ? 'default' : 'ghost'} 
+                  className="w-full justify-start"
+                >
+                Top Posts
                 </Button>
               </Link>
             </div>
@@ -82,13 +95,13 @@ export function Layout({ children }: LayoutProps) {
       <footer className="border-t border-border py-6 bg-muted/50">
         <div className="container flex flex-col md:flex-row justify-between items-center gap-4">
           <div className="flex items-center gap-2">
-            <Award className="h-5 w-5 text-primary" />
+          
             <p className="text-sm text-muted-foreground">
              
             </p>
           </div>
           <p className="text-sm text-muted-foreground">
-            &copy; {new Date().getFullYear()} Medical Analyzer 
+            &copy; {new Date().getFullYear()} Social media Analyzer
           </p>
         </div>
       </footer>
