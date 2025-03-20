@@ -1,8 +1,7 @@
 import express,{Express} from "express";
 import dotenv from "dotenv";
 import cors from "cors";
-import { Test } from "./models/test.model";
-import Testroute from "./routes/Testroute";
+import Allroutes from "./routes/Allroutes";
 dotenv.config();
 
 const app: Express = express();
@@ -11,13 +10,7 @@ app.use(express.json());
 app.use(express.static(__dirname + "/files", { index: false }));
 app.use(cors());
 
-Test.sync()
-
-
-.then(() => console.log("All models synced with the database"))
-.catch((err) => console.error("Unable to sync  all models:", err));
-   
-app.use(Testroute);
+app.use(Allroutes);
 
 
 app.listen(port, () => {
